@@ -7,27 +7,27 @@ import { Loading } from "./components/Loading";
 
 function App() {
   const { loading, isAuth } = UserData();
-  if(loading){
-    return <Loading/>
-  }
-
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path="/"
-          element={isAuth ? <Home /> : <Login/>}
-        />
-        <Route
-          path="/login"
-          element={isAuth ? <Home/> : <Login />}
-        />
-        <Route
-          path="/register"
-          element={<Register />}
-        />
-      </Routes>
-    </BrowserRouter>
+    <>
+      {loading ? <Loading /> :
+        <BrowserRouter>
+          <Routes>
+            <Route
+              path="/"
+              element={isAuth ? <Home /> : <Login />}
+            />
+            <Route
+              path="/login"
+              element={isAuth ? <Home /> : <Login />}
+            />
+            <Route
+              path="/register"
+              element={<Register />}
+            />
+          </Routes>
+        </BrowserRouter>}
+    </>
+
   );
 }
 

@@ -40,9 +40,8 @@ export const UserProvider = ({ children }) => {
 
         }
     }
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     async function fetchUser() {
-        setLoading(true);
         try {
             const { data } = await axios.get("/api/user/me");
             setUser(data);
