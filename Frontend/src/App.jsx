@@ -4,13 +4,14 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { UserData } from "./context/UserContext";
 import { Loading } from "./components/Loading";
+import Navbar from "./components/Navbar";
 
 function App() {
-  const { loading, isAuth } = UserData();
+  const { loading, isAuth, user } = UserData();
   return (
     <>
-      {loading ? <Loading /> :
-        <BrowserRouter>
+      {loading ? <Loading /> : <BrowserRouter>
+        {isAuth && <Navbar user={user}/>}
           <Routes>
             <Route
               path="/"
