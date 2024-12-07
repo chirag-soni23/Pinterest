@@ -5,7 +5,7 @@ function Navbar({user}) {
   return (
     <div>
       <div className="bg-white shadow-sm">
-        <div className="mx-auto px-4 py-2 flex justify-between items-center">
+        <div className="mx-auto fixed top-0 z-10 bg-white left-0 right-0 px-4 py-2 flex justify-between items-center">
             <Link to="/"className='flex items-center mr-5'>
             <img className='h-12 md:mr-2' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJjSZcYEnndhn9RvjJusPNh1Ccyusvl77M4A&s" alt="Pinterest" />
             <span className='text-red-600 text-xl font-bold'>Pinterest</span>

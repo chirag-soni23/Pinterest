@@ -6,6 +6,7 @@ import { UserData } from "./context/UserContext";
 import { Loading } from "./components/Loading";
 import Navbar from "./components/Navbar";
 import Pinpage from "./pages/PinPage";
+import Create from "./pages/Create";
 
 function App() {
   const { loading, isAuth, user } = UserData();
@@ -14,9 +15,9 @@ function App() {
       {loading ? <Loading /> : <BrowserRouter>
         {isAuth && <Navbar user={user} />}
         <Routes>
-          <Route
-            path="/"
-            element={isAuth ? <Home /> : <Login />}
+          <Route path="/" element={isAuth ? <Home /> : <Login />}
+          />
+          <Route path="/create" element={isAuth ? <Create /> : <Login />}
           />
           <Route path="/login" element={isAuth ? <Home /> : <Login />}
           />

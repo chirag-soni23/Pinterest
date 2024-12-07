@@ -51,7 +51,7 @@ function Pinpage({ user }) {
           {loading ? (
             <Loading />
           ) : (
-            <div className="bg-white rounded-lg shadow-lg flex flex-col md:flex-row w-full max-w-4xl">
+            <div className="bg-white mt-20 rounded-lg shadow-lg flex flex-col md:flex-row w-full max-w-4xl">
               {/* Image Section */}
               <div className="w-full md:w-1/2 bg-gray-200 rounded-t-lg md:rounded-l-lg flex items-center justify-center">
                 {pin.image && (
