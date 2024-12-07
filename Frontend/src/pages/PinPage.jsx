@@ -80,8 +80,8 @@ function Pinpage({ user }) {
 
                   {/* Edit and Delete Buttons */}
                   {pin.owner && pin.owner._id === user._id && (
-                    <div className="flex gap-2">
-                      <button onClick={editHandler}><FaEdit /></button>
+                    <div className="flex gap-2 items-center">
+                      <button className='bg-green-500 rounded py-1 px-3' onClick={editHandler}><FaEdit color='#fff' /></button>
                       <button onClick={deletePinHandler} className="bg-red-500 text-white py-1 px-3 rounded"><MdDelete /></button>
                     </div>
                   )}
