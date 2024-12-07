@@ -7,7 +7,7 @@ import { FaEdit } from "react-icons/fa";
 
 function Pinpage({ user }) {
   const params = useParams();
-  const { loading, fetchPin, pin, updatePin, addComment, deleteComment, deletePin } = PinData();
+  const { loading, fetchPin, pin, updatePin, addComment, deleteComment, deletePin, commentLoading } = PinData();
   const [edit, setEdit] = useState(false);
   const [title, setTitle] = useState("");
   const [pinValue, setPinvalue] = useState("");
@@ -138,7 +138,7 @@ function Pinpage({ user }) {
                         placeholder="Enter comment"
                         type="text"
                       />
-                      <button type="submit" className="bg-red-500 px-4 py-2 text-white rounded">Add+</button>
+                      <button disabled={commentLoading} type="submit" className="bg-red-500 px-4 py-2 text-white rounded">{commentLoading?"Adding...":"Add"}</button>
                     </form>
                   </div>
 

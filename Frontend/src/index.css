@@ -9,6 +9,7 @@
     @apply w-full p-2 px-4 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-md shadow-sm focus:outline-none
 }
 
+/* design scrollbar */
 *::-webkit-scrollbar{
     height: 0.5rem;
     width: 0.2rem;
@@ -19,7 +20,4 @@
 *::-webkit-scrollbar-thumb{
     background-color: #2e2d2b;
 }
-*::selection{
-    background-color: #f9f9f9;
-    color: #08D665;
-}
+
