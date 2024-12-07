@@ -142,7 +142,7 @@ function Pinpage({ user }) {
                     </form>
                   </div>
 
-                  <div className="overflow-y-auto max-h-64 mt-4">
+                  <div className="overflow-y-auto px-2 max-h-64 mt-4">
                     {pin.comments && pin.comments.length > 0 ? pin.comments.map((e, i) => (
                       <div key={i} className="flex items-center justify-between mb-4">
                         <Link to={`/user/${e.user}`}>
