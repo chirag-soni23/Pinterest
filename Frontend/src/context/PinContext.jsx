@@ -7,6 +7,7 @@ export const Pinprovider = ({children})=>{
     const [pins,setPins] = useState([]);
     const [loading,setLoading] = useState(true);
     const [commentLoading,setCommentLoading] = useState(false);
+    const [pinLoading,setPinLoading] = useState(false);
     async function fetchPins(){
         try {
             const {data} = await axios.get("/api/pin/all")
@@ -90,6 +91,7 @@ export const Pinprovider = ({children})=>{
     }
 
     async function addPin(formData,setFilePrev, setFile, setTitle,setPin,navigate){
+        setPinLoading(true);
         try {
             const {data} = await axios.post('/api/pin/new',formData);
             toast.success(data.message);
@@ -98,14 +100,16 @@ export const Pinprovider = ({children})=>{
             setPin("");
             setTitle("");
             fetchPins();
-            navigate("/");            
+            navigate("/");  
+            setPinLoading(false);
         } catch (error) {
             toast.error(error.response.data.message);
+            setPinLoading(false);
         }
     }
 
 
-    return <PinContext.Provider value={{pins,loading,fetchPin,pin,updatePin,addComment,deleteComment,deletePin,commentLoading,addPin}}>{children}</PinContext.Provider>
+    return <PinContext.Provider value={{pins,loading,fetchPin,pin,updatePin,addComment,deleteComment,deletePin,commentLoading,addPin,pinLoading}}>{children}</PinContext.Provider>
 }
 
 export const PinData = () => useContext(PinContext);

@@ -9,7 +9,7 @@ const Create = () => {
     const [filePrev, setFilePrev] = useState('');
     const [title, setTitle] = useState("");
     const [pin, setPin] = useState("");
-    const { addPin } = PinData();
+    const { addPin,pinLoading } = PinData();
 
     const handleClick = () => {
         inputRef.current.click();
@@ -61,7 +61,7 @@ const Create = () => {
                                 <label htmlFor="pin" className='block text-sm font-medium text-gray-700'>pin</label>
                                 <input required value={pin} onChange={(e) => setPin(e.target.value)} type="text" id='pin' className='common-input' />
                             </div>
-                            <button className='common-btn'>Add</button>
+                            <button disabled={pinLoading} className='common-btn'>{pinLoading?"Adding...":"Add"}</button>
                         </form>
                     </div>
                 </div>
