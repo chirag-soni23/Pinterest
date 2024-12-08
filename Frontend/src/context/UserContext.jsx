@@ -66,14 +66,23 @@ export const UserProvider = ({ children }) => {
             setIsAuth(false);
             setLoading(false);
         } catch (error) {
-            toast.error("Logout failed");
-            console.log("Logout error:", error);
+            toast.error(error.response.data.message)
         } finally {
             setBtnLoading(false);
         }
     }
 
-    return <UserContext.Provider value={{ loginUser, btnLoading, isAuth, user, loading, registerUser, logout }}>{children}
+    async function followUser(id,fetchUser){
+        try {
+            const {data} = await axios.post('/api/user/follow/'+id);
+            toast.success(data.message);  
+            fetchUser();          
+        } catch (error) {
+            toast.error(error.response.data.message)
+        }
+    }
+
+    return <UserContext.Provider value={{ loginUser, btnLoading, isAuth, user, loading, registerUser, logout, followUser }}>{children}
         <Toaster /></UserContext.Provider>
 }
 
