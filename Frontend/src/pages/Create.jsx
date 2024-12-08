@@ -36,7 +36,7 @@ const Create = () => {
     }
     return (
         <div>
-            <div className="flex flex-erap justify-center items-center gap-2 mt-10">
+            <div className="flex flex-wrap justify-center items-center gap-2 mt-10">
                 <div className='flex mt-20 items-center justify-center'>
                     <div onClick={handleClick} className='flex flex-col items-center justify-center w-80 h-auti p-6 bg-white rounded-lg shadow-lg'>
                         {filePrev && <img src={filePrev} alt="" />}
