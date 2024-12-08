@@ -1,8 +1,15 @@
 import React from 'react'
 import { UserData } from '../context/UserContext';
+import { PinData } from '../context/PinContext';
+import PinCard from './PinCard';
 
 const Account = ({user}) => {
     const {logout} = UserData();
+    const {pins} = PinData();
+    let userPins;
+    if(pins){
+        userPins = pins.filter(pin=>pin.owner == user._id);
+    }
     const logoutHandler = () =>{
         logout();
     }
@@ -20,6 +27,10 @@ const Account = ({user}) => {
                 <div className='flex justify-center mt-4 space-x-2'>
                     <button onClick={logoutHandler} className='bg-gray-200 px-4 py-2 rounded'>Logout</button>
                 </div>
+                <div className='mt-4 flex flex-wrap justify-center gap-4'>{
+                    userPins && userPins.length >0? userPins.map((e)=>(
+                        <PinCard key={e._id} pin={e}/>
+                    )): <p>No pin yet</p>}</div>
             </div>
         </div>
     </div>
