@@ -7,7 +7,7 @@ import cookieParser from 'cookie-parser'
 import cloudinary from 'cloudinary'
 
 const app = express();
-const PORT = 5000 || process.env.PORT;
+const PORT = 5000;
 
 dotenv.config();
 
