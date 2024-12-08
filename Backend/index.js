@@ -6,6 +6,7 @@ import pinRoutes from './routes/pinRoutes.js';
 import cookieParser from 'cookie-parser'
 import cloudinary from 'cloudinary'
 import cors from 'cors';
+import path from 'path';
 
 const app = express();
 const PORT = 5000;
@@ -18,9 +19,9 @@ cloudinary.v2.config({
     api_secret:process.env.CLOUD_SECRET
 })
 
-app.get('/',(req,res)=>{
-    res.send("Hello")
-})
+// app.get('/',(req,res)=>{
+//     res.send("Hello")
+// })
 
 // middleware
 app.use(cors());
@@ -31,6 +32,12 @@ app.use(cookieParser())
 // routes
 app.use('/api/user',userRoutes);
 app.use('/api/pin',pinRoutes);
+
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname,"/frontend/dist")))
+app.get("*",(req,res)=>{
+    res.sendFile(path.join(__dirname,"frontend","dist","index.html"))
+})
 
 // server
 app.listen(PORT,()=>{
