@@ -5,6 +5,7 @@ import userRoutes from './routes/userRoutes.js';
 import pinRoutes from './routes/pinRoutes.js';
 import cookieParser from 'cookie-parser'
 import cloudinary from 'cloudinary'
+import cors from 'cors';
 
 const app = express();
 const PORT = 5000;
@@ -22,6 +23,7 @@ app.get('/',(req,res)=>{
 })
 
 // middleware
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser())
 
