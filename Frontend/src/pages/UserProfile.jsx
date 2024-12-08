@@ -18,6 +18,11 @@ const UserProfile = ({ user: loggedInUser }) => {
         setIsFollow(!isFollow);
         followUser(user._id, fetchUser)
     }
+    useEffect(() => {
+        if (user && user.followers?.includes(loggedInUser._id)) {
+            setIsFollow(true);
+        }
+    }, [user, loggedInUser]);
     let userPins;
     if (pins) {
         userPins = pins.filter(pin => pin.owner == user?._id);
