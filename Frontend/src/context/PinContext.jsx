@@ -28,7 +28,7 @@ export const Pinprovider = ({children})=>{
             fetchPin(id);
             setEdit(false)           
         } catch (error) {
-            toast.error(error.response.data.message)       
+            toast.error(error.response.data.message);      
         }
     }
 
@@ -89,8 +89,23 @@ export const Pinprovider = ({children})=>{
         }
     }
 
+    async function addPin(formData,setFilePrev, setFile, setTitle,setPin,navigate){
+        try {
+            const {data} = await axios.post('/api/pin/new',formData);
+            toast.success(data.message);
+            setFile([]);
+            setFilePrev("");
+            setPin("");
+            setTitle("");
+            fetchPins();
+            navigate("/");            
+        } catch (error) {
+            toast.error(error.response.data.message);
+        }
+    }
 
-    return <PinContext.Provider value={{pins,loading,fetchPin,pin,updatePin,addComment,deleteComment,deletePin,commentLoading}}>{children}</PinContext.Provider>
+
+    return <PinContext.Provider value={{pins,loading,fetchPin,pin,updatePin,addComment,deleteComment,deletePin,commentLoading,addPin}}>{children}</PinContext.Provider>
 }
 
 export const PinData = () => useContext(PinContext);
