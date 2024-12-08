@@ -7,7 +7,7 @@ export default defineConfig({
   server:{
     proxy:{
       "/api":{
-        target:"https://pinterest-06m2.onrender.com/"
+        target:"https://pinterest-znv3.onrender.com/"
       }
     }
   }
