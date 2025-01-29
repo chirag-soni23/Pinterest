@@ -5,6 +5,7 @@ import userRoutes from './routes/userRoutes.js';
 import pinRoutes from './routes/pinRoutes.js';
 import cookieParser from 'cookie-parser'
 import cloudinary from 'cloudinary'
+import compression from 'compression';
 import cors from 'cors';
 import path from 'path';
 
@@ -26,7 +27,8 @@ cloudinary.v2.config({
 // middleware
 app.use(cors());
 app.use(express.json());
-app.use(cookieParser())
+app.use(cookieParser());
+app.use(compression());
 
 
 // routes
