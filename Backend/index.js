@@ -15,9 +15,9 @@ const PORT = 5000;
 dotenv.config();
 
 cloudinary.v2.config({
-    cloud_name:process.env.CLOUD_NAME,
-    api_key:process.env.CLOUD_API,
-    api_secret:process.env.CLOUD_SECRET
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.CLOUD_API,
+    api_secret: process.env.CLOUD_SECRET
 })
 
 // app.get('/',(req,res)=>{
@@ -32,17 +32,17 @@ app.use(compression());
 
 
 // routes
-app.use('/api/user',userRoutes);
-app.use('/api/pin',pinRoutes);
+app.use('/api/user', userRoutes);
+app.use('/api/pin', pinRoutes);
 
 const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname,"/Frontend/dist")))
-app.get("*",(req,res)=>{
-    res.sendFile(path.join(__dirname,"Frontend","dist","index.html"))
+app.use(express.static(path.join(__dirname, "/Frontend/dist")))
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "Frontend", "dist", "index.html"))
 })
 
 // server
-app.listen(PORT,()=>{
+app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
     connectDb();
 })
